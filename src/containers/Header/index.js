@@ -3,6 +3,7 @@
  */
 import React, {Component} from "react";
 
+const appName = "cama";
 const styles = {
   content: {
     backgroundColor: 'white',
