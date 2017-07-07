@@ -6,9 +6,20 @@ import React, {Component} from "react";
 const appName = "cama";
 const styles = {
   content: {
-    backgroundColor: 'white',
-    height: '100%',
+    width: 960,
+    margin: 'auto',
+    paddingLeft: 15,
+    paddingRight: 15,
   },
+  container: {},
+  app: {},
+  buttonTextColor: {},
+  toolbar: {
+    backgroundColor: blue500,
+    color: blue50,
+    marginBottom: 50,
+  }
+};
 };
 
 class Header extends Component {
