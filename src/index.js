@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
-import { Provider } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Provider} from "react-redux";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import injectTapEventPlugin from "react-tap-event-plugin";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
-import Header from './containers/Header';
-import Home from './routes/Home';
+import Header from "./containers/Header";
+import Home from "./routes/Home";
 
-import store from './store';
+import store from "./store";
 
 
 injectTapEventPlugin();
