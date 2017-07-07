@@ -2,107 +2,67 @@
  * Created by satuk on 04.07.17.
  */
 import React, {Component} from "react";
-import {Link} from "react-router-dom";
-import {Toolbar, ToolbarGroup, ToolbarTitle} from "material-ui/Toolbar";
 import {connect} from "react-redux";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
-import FlatButton from "material-ui/FlatButton";
-import {blue500, blue50} from "material-ui/styles/colors";
-import {search} from 'material-ui/svg-icons/action/search'
-import qs from "query-string";
+import PropTypes from "prop-types";
+import {createStyleSheet, withStyles} from "material-ui/styles";
+import {AppBar, Button, Toolbar, Typography, TextField} from "material-ui";
+import Input from "material-ui/Input/Input";
+
 
 const appName = "cama";
-const styles = {
-  content: {
-    width: 960,
-    margin: 'auto',
-    paddingLeft: 15,
-    paddingRight: 15,
+const styleSheet = createStyleSheet('Header', theme => ({
+  root: {
+    marginTop: 0,
+    width: '100%',
   },
-  container: {},
-  app: {},
-  buttonTextColor: {},
-  toolbar: {
-    backgroundColor: blue500,
-    color: blue50,
-    marginBottom: 50,
+  flex: {
+    flex: 1,
+  },
+  input: {
+    margin: theme.spacing.unit,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  app: {
+    backgroundColor: '#424242',
   }
-};
-
-const Login = () => {
-  return (
-    <div>
-      <Link to="/sign-in"><FlatButton style={styles.buttonTextColor} label="Sign In"/></Link>
-      <Link to="/sign-up"><FlatButton style={styles.buttonTextColor} label="Sign Up"/></Link>
-    </div>
-  );
-}
-
-const Logged = () => {
-  return (
-    <div>
-      <Link to="/edit-profile"><FlatButton style={styles.buttonTextColor} label="Edit Profile"/></Link>
-      <Link to="/sign-out"><FlatButton style={styles.buttonTextColor} label="Sign Out"/></Link>
-    </div>
-  );
-};
-
+}));
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchEvent: '',
-      logged: false,
-    };
-  }
-
-  handleSearchBoxOnChange = (e) => {
-    const searchEvent = e.currentTarget.value;
-
-    this.setState({
-      searchEvent,
-    });
-    console.log(this.state.searchEvent);
-  };
-
-  handleButtonOnClick = () => {
-    this.props.history.push({ pathname: '/search', search: qs.stringify({ query: this.state.searchEvent }) });
-  };
-
   render() {
+    const {classes} = this.props;
+
     return (
-      <div style={styles.container}>
-        <Toolbar style={styles.toolbar}>
-          <ToolbarGroup firstChild={true}>
-            <Link to="/" style={styles.app}><ToolbarTitle text={appName}/></Link>
-            <Link to="/register/staff-member"><FlatButton style={{ color: 'white' }}
-                                                          label="Become a Staff-Member"/></Link>
-            <Link to="/register/event-manager"><FlatButton style={{ color: 'white' }}
-                                                           label="Become a Event-Manager"/></Link>
-          </ToolbarGroup>
-
-          <ToolbarGroup>
+      <div className={classes.root}>
+        <AppBar position="fixed">
+          <Toolbar className={classes.app}>
+            <Typography
+              type="title"
+              className={classes.flex}
+            >
+              {appName}
+            </Typography>
+            <Button raised className={classes.button}>Events</Button>
+            <Button raised className={classes.button}>Companies</Button>
             <TextField
-              hintText="Find Events to apply"
-              onChange={this.handleSearchBoxOnChange}
-              value={this.state.searchEvent}
-              type="input"
-              underlineStyle={{ borderColor: 'white' }}
-              underlineFocusStyle={{ borderColor: 'white' }}
-              hintStyle={{ color: 'white' }}
-              floatingLabelStyle={{ color: 'white' }}
+              id="email"
+              label="E-Mail"
+              className={classes.input}
+              type="email"
+              marginForm
             />
-            <RaisedButton label="Search" style={{ color: 'white' }} onClick={this.handleButtonOnClick}/>
-          </ToolbarGroup>
-
-          <ToolbarGroup lastChild={true}>
-            {this.state.logged ? <Logged /> : <Login />}
-          </ToolbarGroup>
-        </Toolbar>
-        <div style={styles.content}>
+            <TextField
+              id="password"
+              label="Password"
+              className={classes.input}
+              type="password"
+              marginForm
+            />
+            <Button raised color="contrast">Login</Button>
+          </Toolbar>
+        </AppBar>
+        <div className={classes.content}>
           {
             this.props.children
           }
@@ -112,4 +72,8 @@ class Header extends Component {
   }
 }
 
-export default connect()(Header);
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect()(withStyles(styleSheet)(Header));
