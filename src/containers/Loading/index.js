@@ -11,6 +11,15 @@ const styleSheet = createStyleSheet('Loading', theme => ({
     width: '100%',
     marginTop: 64,
   },
+  indeterminateBar1: {
+    backgroundColor: 'grey',
+  },
+  indeterminateBar2: {
+    backgroundColor: 'black',
+  },
+  color: {
+    backgroundColor: 'black'
+  },
 }));
 
 
@@ -19,7 +28,11 @@ const Loading = (props) => {
 
   return (
     <div className={classes.root}>
-      <LinearProgress />
+      <LinearProgress classes={{
+        root: classes.color,
+        indeterminateBar1: classes.indeterminateBar1,
+        indeterminateBar2: classes.indeterminateBar2,
+      }} />
     </div>
 
   );
