@@ -48,7 +48,30 @@ const Logged = () => {
   );
 };
 
+
 class Header extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchEvent: '',
+      logged: false,
+    };
+  }
+
+  handleSearchBoxOnChange = (e) => {
+    const searchEvent = e.currentTarget.value;
+
+    this.setState({
+      searchEvent,
+    });
+    console.log(this.state.searchEvent);
+  };
+
+  handleButtonOnClick = () => {
+    this.props.history.push({ pathname: '/search', search: qs.stringify({ query: this.state.searchEvent }) });
+  };
+
   render() {
     return (
       <div style={styles.container}>
