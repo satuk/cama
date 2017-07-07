@@ -4,7 +4,7 @@ export default ({ dispatch, getState }) => next => action => {
   if ( action.type !== API ) {
     return next(action);
   }
-  console.log(next(action));
+
   // const { currentUser } = getState();
   let myHeaders = new Headers({
     'Content-Type': 'application/json',
