@@ -18,3 +18,9 @@ export const fetchEvents = () => ({
   url: '/api/events',
   success: addEvents,
 });
+
+export const fetchEventsByCompany = (id) => ({
+  type: API,
+  url: '/api/companies/' + id + '/events',
+  success: addEvents,
+});
