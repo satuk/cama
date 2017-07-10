@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.0.10"
+    "react-scripts": "^1.0.10"
   },
   "dependencies": {
+    "google-map-react": "^0.24.0",
     "material-ui": "^1.0.0-alpha.21",
     "material-ui-icons": "^1.0.0-alpha.19",
     "moment": "^2.18.1",
