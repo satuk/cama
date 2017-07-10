@@ -5,8 +5,8 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {createStyleSheet, withStyles} from "material-ui/styles";
-import {AppBar, Button, Toolbar, Typography, TextField} from "material-ui";
-import Input from "material-ui/Input/Input";
+import {AppBar, Button, TextField, Toolbar, Typography} from "material-ui";
+import {Link} from "react-router-dom";
 
 
 const appName = "cama";
@@ -26,12 +26,19 @@ const styleSheet = createStyleSheet('Header', theme => ({
   },
   app: {
     backgroundColor: '#424242',
-  }
+  },
+  a: {
+    textDecoration: 'none',
+  },
+  appLink: {
+    color: 'white',
+    textDecoration: 'none',
+  },
 }));
 
 class Header extends Component {
   render() {
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     return (
       <div className={classes.root}>
@@ -41,10 +48,14 @@ class Header extends Component {
               type="title"
               className={classes.flex}
             >
-              {appName}
+              <Link className={classes.appLink} to="/">{appName}</Link>
             </Typography>
-            <Button raised className={classes.button}>Events</Button>
-            <Button raised className={classes.button}>Companies</Button>
+            <Link className={classes.a} to="/events">
+              <Button raised className={classes.button}>Events</Button>
+            </Link>
+            <Link className={classes.a} to="/organizations">
+              <Button raised className={classes.button}>Organizations</Button>
+            </Link>
             <TextField
               id="email"
               label="E-Mail"
