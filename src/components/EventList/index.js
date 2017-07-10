@@ -3,14 +3,14 @@
  */
 import React from "react";
 import Table, {TableBody, TableCell, TableHead, TableRow} from "material-ui/Table";
-import Container from "../../components/Container";
-import EventListItem from "../../components/EventListItem";
+import Container from "../Container/index";
+import EventListItem from "../EventListItem/index";
 import Paper from "material-ui/Paper";
 
 const EventList = (props) => {
 
   const { events } = props;
-  
+
   return (
     <Container>
       <Paper>
@@ -22,12 +22,13 @@ const EventList = (props) => {
               <TableCell>Date</TableCell>
               <TableCell>Functions</TableCell>
               <TableCell>Time</TableCell>
+              <TableCell>Application</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {
               events.map((event, index) => {
-                return <EventListItem key={index} event={event}/>
+                return <EventListItem key={index} event={event} size={events.length}/>
               })
             }
           </TableBody>
