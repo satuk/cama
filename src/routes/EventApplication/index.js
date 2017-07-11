@@ -27,7 +27,8 @@ const defaultProps = {
   zoom: 14,
 };
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Marker = ({ text }) => <div
+  style={{ backgroundColor: 'black', height: 50, width: 50, color: 'white', }}>{text}</div>;
 const API_KEY = 'AIzaSyCKRZ6oUthD6PNR4cQP56Mu7C32nr1xfh4';
 
 class EventApplication extends Component {
@@ -54,8 +55,8 @@ class EventApplication extends Component {
         <Paper>
           <Grid container gutter={24}>
             <Grid item xs={12}>
-              <Typography type="headline" component="h1">
-                {curr.eventName} • {curr.eventDate}
+              <Typography type="display1">
+                {curr.name} • {curr.date}
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -68,23 +69,35 @@ class EventApplication extends Component {
                   defaultCenter={defaultProps.center}
                   defaultZoom={defaultProps.zoom}
                 >
-                  <AnyReactComponent
+                  <Marker
                     lat={47.3768870}
                     lng={8.5416940}
-                    text={'Zurich'}
+                    text={curr.company.name}
                   />
                 </GoogleMapReact>
               </div>
             </Grid>
-            <Grid item xs={12}>
-              {curr.description}
-              information about the event
+            <Grid item md={12}>
+              <img src={curr.company.logo} alt={curr.company.description}/>
+              <Typography type="title">Location: {curr.company.name}</Typography>
+              <Typography type="subheading">{curr.company.description}</Typography>
+              <Typography type="subheading">{curr.company.address}</Typography>
+              <Typography type="subheading">{curr.company.postalCode}, {curr.company.city}</Typography>
+              <Typography type="subheading"><a href={curr.company.url}>{curr.company.url}</a></Typography>
+            </Grid>
+            <Grid item md={6}>
+              <Typography type="title" gutterBottom>
+                Description: {curr.description}
+              </Typography>
+            </Grid>
+            <Grid item md={6}>
+              <Typography type="title" gutterBottom>Expected Quests: {curr.expectedPerson}</Typography>
             </Grid>
           </Grid>
 
           <Grid container gutter={24}>
-            <Grid item xs={12}>
-              <h1>Future Events</h1>
+            <Grid item md={12}>
+              <Typography type="display1">Future Events</Typography>
               <EventList events={withOutCurrentEvent}/>
             </Grid>
           </Grid>
