@@ -2,6 +2,7 @@
   "name": "cama",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://satuk.github.io/cama",
   "devDependencies": {
     "react-scripts": "^1.0.10"
   },
