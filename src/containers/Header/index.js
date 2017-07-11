@@ -5,7 +5,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {createStyleSheet, withStyles} from "material-ui/styles";
-import {AppBar, Button, TextField, Toolbar, Typography} from "material-ui";
+import {AppBar, Button, Input, Toolbar, Typography} from "material-ui";
 import {Link} from "react-router-dom";
 
 
@@ -60,19 +60,26 @@ class Header extends Component {
             <Link className={classes.a} to="/organizations">
               <Button raised className={classes.button}>Organizations</Button>
             </Link>
-            <TextField
+            <Input
+              classes={{
+                root: classes.input,
+                input: classes.inputBack,
+                underline: classes.inputUnder,
+                inkbar: classes.inkbar,
+              }}
               id="email"
               label="E-Mail"
-              className={classes.input}
               type="email"
-              marginForm
+              placeholder="e-mail"
             />
-            <TextField
+            <Input
+              classes={{
+                root: classes.input,
+              }}
               id="password"
               label="Password"
-              className={classes.input}
               type="password"
-              marginForm
+              placeholder="password"
             />
             <Button raised color="contrast">Login</Button>
           </Toolbar>
