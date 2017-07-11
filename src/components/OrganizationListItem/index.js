@@ -53,7 +53,7 @@ const OrganizationListItem = (props) => {
         </CardMedia>
         <CardContent>
           <Typography type="body1" className={classes.title}>
-            Events of this month:
+            Total Events: {props.size}
           </Typography>
           <Typography type="headline" component="h2">
             {org.name}
