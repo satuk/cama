@@ -9,7 +9,6 @@ import PropTypes from "prop-types";
 import {createStyleSheet, withStyles} from "material-ui/styles";
 import Typography from 'material-ui/Typography';
 
-
 const styleSheet = createStyleSheet('OrganizationList', theme => ({
   root: {
     flexGrow: 1,

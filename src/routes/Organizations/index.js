@@ -13,7 +13,6 @@ class Organizations extends Component {
 
   componentDidMount() {
     this.props.fetchOrganizations();
-
     if ( Object.keys(this.props.events).length === 0 ) {
       this.props.fetchEvents();
     }
