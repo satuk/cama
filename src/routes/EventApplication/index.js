@@ -131,4 +131,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(EventApplication));
-
