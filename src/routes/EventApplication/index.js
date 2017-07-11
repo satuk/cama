@@ -38,12 +38,14 @@ class EventApplication extends Component {
 
   render() {
     const { eventsByCompany } = this.props;
-    const id = parseInt(this.props.match.params.event_id, 10);
+    const id = parseInt(this.props.match.params.event_id);
     const currentEvent = eventsByCompany.filter(e => e.id === id);
     const curr = Object.values(currentEvent)[0];
     const withOutCurrentEvent = eventsByCompany.filter(e => e.id !== id);
 
-    if ( !this.props.eventsByCompany ) {
+    console.log(curr);
+
+    if ( !this.props.eventsByCompany.length ) {
       return <Loading />
     }
 
@@ -53,7 +55,7 @@ class EventApplication extends Component {
           <Grid container gutter={24}>
             <Grid item xs={12}>
               <Typography type="headline" component="h1">
-                eventName
+                {curr.eventName} • {curr.eventDate}
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -75,7 +77,7 @@ class EventApplication extends Component {
               </div>
             </Grid>
             <Grid item xs={12}>
-              description
+              {curr.description}
               information about the event
             </Grid>
           </Grid>
