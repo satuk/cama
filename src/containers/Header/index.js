@@ -31,8 +31,10 @@ const styleSheet = createStyleSheet('Header', theme => ({
     textDecoration: 'none',
   },
   appLink: {
-    color: 'white',
+    color: '#79e6ff',
     textDecoration: 'none',
+    fontFamily: 'Comfortaa, cursive',
+    fontSize: 52,
   },
 }));
 
@@ -48,7 +50,9 @@ class Header extends Component {
               type="title"
               className={classes.flex}
             >
-              <Link className={classes.appLink} to="/">{appName}</Link>
+              <Link className={classes.appLink} to="/">
+                {appName}
+              </Link>
             </Typography>
             <Link className={classes.a} to="/events">
               <Button raised className={classes.button}>Events</Button>
