@@ -5,7 +5,7 @@ import React, {Component} from "react";
 import OrganizationList from "../../containers/OrganizationList";
 import {connect} from "react-redux";
 import {fetchOrganizations} from "../../store/actions/organizations";
-import {fetchEventsByCompany} from "../../store/actions/events";
+import {fetchEvents} from "../../store/actions/events";
 import Loading from "../../components/Loading";
 
 
@@ -13,6 +13,10 @@ class Organizations extends Component {
 
   componentDidMount() {
     this.props.fetchOrganizations();
+
+    if ( Object.keys(this.props.events).length === 0 ) {
+      this.props.fetchEvents();
+    }
   }
 
   render() {
@@ -24,24 +28,26 @@ class Organizations extends Component {
     }
 
     return (
-      <OrganizationList classes={classes} organiizations={organizations}/>
+      <OrganizationList classes={classes} organizations={organizations}/>
     );
   }
 }
 
 const mapSateToProps = (state) => {
   const organizations = Object.values(state.organizations);
-  const eventsByCompany = Object.values(state.events);
+  const events = Object.values(state.events);
+
+  organizations.map(org => org.numberOfEvents = events.filter(event => event.company.id === org.id).length);
 
   return {
     organizations,
-    eventsByCompany,
+    events,
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
   fetchOrganizations: () => dispatch(fetchOrganizations()),
-  fetchEventsByCompany: (id) => dispatch(fetchEventsByCompany(id)),
+  fetchEvents: () => dispatch(fetchEvents()),
 });
 
 export default connect(mapSateToProps, mapDispatchToProps)(Organizations);
