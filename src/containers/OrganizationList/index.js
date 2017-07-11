@@ -25,7 +25,7 @@ const OrganizationList = (props) => {
       <Grid container gutter={24}>
         {
           organizations.map((org, index) => {
-            return <OrganizationListItem key={index} org={org} size={org.numberOfEvents}/>;
+            return <OrganizationListItem key={index} org={org} />;
           })
         }
       </Grid>

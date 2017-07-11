@@ -9,6 +9,8 @@ import Button from "material-ui/Button";
 import Typography from "material-ui/Typography";
 import Grid from "material-ui/Grid";
 import {Link} from "react-router-dom";
+import Chip from 'material-ui/Chip';
+import Avatar from 'material-ui/Avatar';
 
 
 const styleSheet = createStyleSheet('OrganizationList', theme => ({
@@ -35,6 +37,8 @@ const styleSheet = createStyleSheet('OrganizationList', theme => ({
   },
   img: {
     width: '100%',
+    height: '350px',
+    objectFit: 'cover',
   },
 }));
 
@@ -48,12 +52,15 @@ const OrganizationListItem = (props) => {
         <CardMedia style={{
           root: classes.cardMedia,
         }}>
-          {/*<img className={classes.img} src={org.logo} alt={org.description}/>*/}
-          <img className={classes.img} src={'http://placehold.it/500x400?text=' + org.name} alt={org.description}/>
+          <img className={classes.img} src={org.logo} alt={org.description}/>
         </CardMedia>
         <CardContent>
           <Typography type="body1" className={classes.title}>
-            Total Events: {props.size}
+            <Chip
+              avatar={<Avatar>{org.numberOfEvents === 0 ? '0': org.numberOfEvents}</Avatar>}
+              label="Total Events"
+              className={classes.chip}
+            />
           </Typography>
           <Typography type="headline" component="h2">
             {org.name}
