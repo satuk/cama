@@ -4,13 +4,15 @@
 import React, {Component} from "react";
 import EventList from "../../components/EventList/index";
 import {connect} from "react-redux";
-import {fetchEventsByCompany} from "../../store/actions/events";
+import {fetchEvents} from "../../store/actions/events";
 import Loading from "../../components/Loading";
 
 class EventsByOrganization extends Component {
 
   componentDidMount() {
-    this.props.fetchEventsByCompany(this.props.match.params.id);
+    if ( !this.props.eventsByCompany.length ) {
+      this.props.fetchEvents();
+    }
   }
 
   render() {
@@ -26,16 +28,17 @@ class EventsByOrganization extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const eventsByCompany = Object.values(state.events);
+const mapStateToProps = (state, props) => {
+  const eventsByCompany = Object.values(state.events)
+    .filter(event => event.company.id == props.match.params.id);
 
   return {
     eventsByCompany,
   }
 };
-
 const mapDispatchToProps = (dispatch) => ({
-  fetchEventsByCompany: (id) => dispatch(fetchEventsByCompany(id)),
+  fetchEvents: () => dispatch(fetchEvents()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsByOrganization);
+
