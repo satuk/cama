@@ -24,14 +24,11 @@ const styleSheet = createStyleSheet('Header', theme => ({
   button: {
     margin: theme.spacing.unit,
   },
-  app: {
-    backgroundColor: '#424242',
-  },
   a: {
     textDecoration: 'none',
   },
   appLink: {
-    color: '#79e6ff',
+    color: '#FF9902',
     textDecoration: 'none',
     fontFamily: 'Comfortaa, cursive',
     fontSize: 52,
@@ -45,7 +42,7 @@ class Header extends Component {
     return (
       <div className={classes.root}>
         <AppBar position="fixed">
-          <Toolbar className={classes.app}>
+          <Toolbar>
             <Typography
               type="title"
               className={classes.flex}
@@ -61,27 +58,18 @@ class Header extends Component {
               <Button raised className={classes.button}>Organizations</Button>
             </Link>
             <Input
-              classes={{
-                root: classes.input,
-                input: classes.inputBack,
-                underline: classes.inputUnder,
-                inkbar: classes.inkbar,
-              }}
               id="email"
               label="E-Mail"
               type="email"
               placeholder="e-mail"
             />
             <Input
-              classes={{
-                root: classes.input,
-              }}
               id="password"
               label="Password"
               type="password"
               placeholder="password"
             />
-            <Button raised color="contrast">Login</Button>
+            <Button raised>Login</Button>
           </Toolbar>
         </AppBar>
         <div className={classes.content}>
