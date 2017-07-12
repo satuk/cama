@@ -13,7 +13,7 @@ import Chip from "material-ui/Chip";
 import Avatar from "material-ui/Avatar";
 
 
-const styleSheet = createStyleSheet('OrganizationList', theme => ({
+const styleSheet = createStyleSheet('OrganizationListItem', theme => ({
   card: {
     maxWidth: 345,
   },
@@ -78,12 +78,10 @@ const OrganizationListItem = (props) => {
           ) : (
             ''
           )}
-
         </CardActions>
       </Card>
     </Grid>
-  )
-    ;
+  );
 };
 
 OrganizationListItem.propTypes = {
