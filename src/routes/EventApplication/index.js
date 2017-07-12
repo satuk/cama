@@ -39,7 +39,7 @@ class EventApplication extends Component {
 
   render() {
     const { eventsByCompany } = this.props;
-    const id = parseInt(this.props.match.params.event_id);
+    const id = parseInt(this.props.match.params.event_id, 10);
     const currentEvent = eventsByCompany.filter(e => e.id === id);
     const curr = Object.values(currentEvent)[0];
     const withOutCurrentEvent = eventsByCompany.filter(e => e.id !== id);
