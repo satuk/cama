@@ -9,8 +9,8 @@ import Button from "material-ui/Button";
 import Typography from "material-ui/Typography";
 import Grid from "material-ui/Grid";
 import {Link} from "react-router-dom";
-import Chip from 'material-ui/Chip';
-import Avatar from 'material-ui/Avatar';
+import Chip from "material-ui/Chip";
+import Avatar from "material-ui/Avatar";
 
 
 const styleSheet = createStyleSheet('OrganizationList', theme => ({
@@ -28,17 +28,10 @@ const styleSheet = createStyleSheet('OrganizationList', theme => ({
   a: {
     textDecoration: 'none',
   },
-  cardAction: {
-    backgroundColor: '#575757',
-    justifyContent: 'space-around',
-  },
-  cardMedia: {
-    // minHeight: 460,
-  },
   img: {
     width: '100%',
-    height: '350px',
-    objectFit: 'cover',
+    height: '200px',
+    objectFit: 'scale-down',
   },
 }));
 
@@ -47,17 +40,15 @@ const OrganizationListItem = (props) => {
   const { org } = props;
 
   return (
-    <Grid item md={3} sm={6} xs={12}>
-      <Card className={classes.cardMedia}>
-        <CardMedia style={{
-          root: classes.cardMedia,
-        }}>
+    <Grid item lg={2} md={4} sm={6} xs={12}>
+      <Card className={classes.card}>
+        <CardMedia>
           <img className={classes.img} src={org.logo} alt={org.description}/>
         </CardMedia>
         <CardContent>
           <Typography type="body1" className={classes.title}>
             <Chip
-              avatar={<Avatar>{org.numberOfEvents === 0 ? '0': org.numberOfEvents}</Avatar>}
+              avatar={<Avatar>{org.numberOfEvents === 0 ? '0' : org.numberOfEvents}</Avatar>}
               label="Total Events"
               className={classes.chip}
             />
@@ -69,24 +60,25 @@ const OrganizationListItem = (props) => {
             {org.description}
           </Typography>
           <Typography component="p">
-            {org.address}, {org.postalCode} {org.city}
+            {org.address} • {org.postalCode} {org.city}
           </Typography>
         </CardContent>
-        <CardActions
-          classes={{
-            root: classes.cardAction,
-          }}
-        >
+        <CardActions>
           <Link to={'/organizations/' + org.id + '/apply'} className={classes.a}>
             <Button raised className={classes.button}>
               Apply
             </Button>
           </Link>
-          <Link to={'/organizations/' + org.id + '/events'} className={classes.a}>
-            <Button raised className={classes.button}>
-              Events
-            </Button>
-          </Link>
+          {org.publicEvents ? (
+            <Link to={'/organizations/' + org.id + '/events'} className={classes.a}>
+              <Button raised className={classes.button}>
+                Events
+              </Button>
+            </Link>
+          ) : (
+            ''
+          )}
+
         </CardActions>
       </Card>
     </Grid>
