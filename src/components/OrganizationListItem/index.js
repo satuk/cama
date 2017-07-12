@@ -11,7 +11,7 @@ import Grid from "material-ui/Grid";
 import {Link} from "react-router-dom";
 import Chip from "material-ui/Chip";
 import Avatar from "material-ui/Avatar";
-
+import {colors} from "../../utils/theme";
 
 const styleSheet = createStyleSheet('OrganizationListItem', theme => ({
   card: {
@@ -29,11 +29,14 @@ const styleSheet = createStyleSheet('OrganizationListItem', theme => ({
     textDecoration: 'none',
   },
   img: {
-    width: '100%',
-    height: '200px',
+    width: 'calc(100% - 40px)',
+    height: '250px',
     objectFit: 'scale-down',
+    background: colors.dark4,
+    padding: 20,
   },
 }));
+
 
 const OrganizationListItem = (props) => {
   const { classes } = props;
