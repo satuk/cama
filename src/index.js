@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import {colors} from './utils/theme';
+import {colors} from "./utils/theme";
 import registerServiceWorker from "./registerServiceWorker";
 import {Provider} from "react-redux";
 import {createMuiTheme, MuiThemeProvider} from "material-ui/styles";
@@ -64,6 +64,11 @@ const theme = createMuiTheme({
       root: {
         height: '125px',
         paddingBottom: 20,
+      },
+    },
+    MuiCircularProgress: {
+      root: {
+        color: colors.yellow,
       },
     },
   },
