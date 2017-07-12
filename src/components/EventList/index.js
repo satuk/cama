@@ -31,7 +31,7 @@ const EventList = (props) => {
 
   return (
     <Container>
-      <Typography type="display2" style={{ color: '#424242', }}>All Events</Typography>
+      <Typography type="display2">All Events</Typography>
       <Paper style={{
         display: 'flex',
         justifyContent: 'center',
@@ -51,7 +51,7 @@ const EventList = (props) => {
       </Paper>
       <div style={{marginTop: '30px',marginBottom: '45px',}}>
         <Button raised color="primary" >All</Button>
-        <Button raised color="default">My Organizations</Button>
+        <Button raised color="primary">My Organizations</Button>
       </div>
       {
         events.map((event, index) => <EventListItem key={index} event={event} size={events.length} classes={classes}/>)
