@@ -5,6 +5,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {createStyleSheet, withStyles} from "material-ui/styles";
 import {LinearProgress} from "material-ui/Progress";
+import {colors} from '../../utils/theme';
 
 const styleSheet = createStyleSheet('Loading', theme => ({
   root: {
@@ -12,13 +13,13 @@ const styleSheet = createStyleSheet('Loading', theme => ({
     marginTop: 64,
   },
   indeterminateBar1: {
-    backgroundColor: 'grey',
+    backgroundColor: colors.dark4,
   },
   indeterminateBar2: {
-    backgroundColor: 'black',
+    backgroundColor: colors.dark4,
   },
   color: {
-    backgroundColor: 'black'
+    backgroundColor: colors.orange,
   },
 }));
 
