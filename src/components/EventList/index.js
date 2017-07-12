@@ -43,7 +43,7 @@ const EventList = (props) => {
         <TextField
           id="search"
           type="text"
-          InputProps={{ placeholder: 'Search upcomming Events' }}
+          InputProps={{ placeholder: 'Search upcoming Events' }}
           fullWidth
           marginForm
           classes={classes.search}
