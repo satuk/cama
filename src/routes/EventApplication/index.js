@@ -8,7 +8,7 @@ import {Grid, Paper, Typography} from "material-ui";
 import GoogleMapReact from "google-map-react";
 import PropTypes from "prop-types";
 import EventList from "../../components/EventList";
-import {fetchEventsByCompany} from "../../store/actions/events";
+import {fetchEvents} from "../../store/actions/events";
 import {connect} from "react-redux";
 import Loading from "../../components/Loading";
 
@@ -32,12 +32,16 @@ const Marker = ({ text }) => <div
 const API_KEY = 'AIzaSyCKRZ6oUthD6PNR4cQP56Mu7C32nr1xfh4';
 
 class EventApplication extends Component {
-
   componentDidMount() {
-    this.props.fetchEventsByCompany(this.props.match.params.organization_id);
+    if ( Object.keys(this.props.eventsByCompany).length === 0 ) {
+      this.props.fetchEvents();
+    }
   }
 
   render() {
+
+    console.log("this.props", this.props);
+
     const { eventsByCompany } = this.props;
     const id = parseInt(this.props.match.params.event_id, 10);
     const currentEvent = eventsByCompany.filter(e => e.id === id);
@@ -112,16 +116,19 @@ EventApplication.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const eventsByCompany = Object.values(state.events);
+const mapStateToProps = (state, props) => {
+
+  console.log("props", props);
+
+  const eventsByCompany = Object.values(state.events).filter(event => event.company.id == props.match.params.organization_id);
 
   return {
     eventsByCompany,
   }
 };
-
 const mapDispatchToProps = (dispatch) => ({
-  fetchEventsByCompany: (id) => dispatch(fetchEventsByCompany(id)),
+  fetchEvents: () => dispatch(fetchEvents()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styleSheet)(EventApplication));
+
