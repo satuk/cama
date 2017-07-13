@@ -39,7 +39,6 @@ const styles = {
   how: {
     padding: 50,
     marginTop: 120,
-    textAlign: 'center',
   },
   paperHow: {
     marginTop: 50,
@@ -80,8 +79,8 @@ const styles = {
   },
   happyImg: {
     padding: 20,
-    width: 150,
-    height: 150,
+    width: 125,
+    height: 125,
     objectFit: 'scale-down',
     background: gradients.dark3ToDark2,
     margin: 20,
@@ -140,13 +139,16 @@ const Welcome = (props) => (
         </Grid>
       </Grid>
       <Paper style={styles.how}>
-        <Typography type="display1">
-          How it works
-        </Typography>
-
+        <Grid container gutter={24}>
+          <Grid item xs>
+            <Typography type="display1" gutterBottom>
+              How it Works
+            </Typography>
+          </Grid>
+        </Grid>
         <Grid container gutter={24}>
           <Grid item xs={12} md={4}>
-            <Typography type="display1" style={styles.title}>
+            <Typography type="title" style={styles.title}>
               Organizations
             </Typography>
             <Paper style={styles.paperHow}>
@@ -161,7 +163,7 @@ const Welcome = (props) => (
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography type="display1">
+            <Typography type="title">
               Staff Members
             </Typography>
             <Paper style={styles.paperHow}>
@@ -182,7 +184,7 @@ const Welcome = (props) => (
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography type="display1">
+            <Typography type="title">
               Recruitments
             </Typography>
             <Paper style={styles.paperHow}>
