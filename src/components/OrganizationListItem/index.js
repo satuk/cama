@@ -43,7 +43,7 @@ const OrganizationListItem = (props) => {
   const { org } = props;
 
   return (
-    <Grid item lg={2} md={4} sm={6} xs={12}>
+    <Grid item lg={3} md={4} sm={6} xs={12}>
       <Card className={classes.card}>
         <CardMedia>
           <img className={classes.img} src={org.logo} alt={org.description}/>
