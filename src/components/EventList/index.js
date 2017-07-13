@@ -7,7 +7,7 @@ import EventListItem from "../../components/EventListItem";
 import Container from "../Container";
 import Typography from "material-ui/Typography";
 import {createStyleSheet, withStyles} from "material-ui/styles";
-import {Paper, TextField, Button} from "material-ui";
+import {Button, Paper, TextField} from "material-ui";
 import Icon from "material-ui/Icon";
 
 
@@ -25,7 +25,6 @@ const styleSheet = createStyleSheet('EventList', theme => ({
 }));
 
 const EventList = (props) => {
-
   const { events } = props;
   const { classes } = props;
 
@@ -49,8 +48,8 @@ const EventList = (props) => {
           classes={classes.search}
         />
       </Paper>
-      <div style={{marginTop: '30px',marginBottom: '45px',}}>
-        <Button raised color="primary" >All</Button>
+      <div style={{ marginTop: '30px', marginBottom: '45px', }}>
+        <Button raised color="primary">All</Button>
         <Button raised color="primary">My Organizations</Button>
       </div>
       {
