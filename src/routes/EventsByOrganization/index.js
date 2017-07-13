@@ -18,7 +18,7 @@ class EventsByOrganization extends Component {
   render() {
     const { eventsByCompany } = this.props;
 
-    if ( !this.props.eventsByCompany.length ) {
+    if ( !this.props.eventsByCompany ) {
       return <Loading />;
     }
 
@@ -30,7 +30,7 @@ class EventsByOrganization extends Component {
 
 const mapStateToProps = (state, props) => {
   const eventsByCompany = Object.values(state.events)
-    .filter(event => event.company.id === props.match.params.id);
+    .filter(event => event.company.id == props.match.params.id);
 
   return {
     eventsByCompany,
