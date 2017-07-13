@@ -15,18 +15,18 @@ class Events extends Component {
   render() {
     const { events } = this.props;
 
-    if ( !this.props.events.length ) {
+    if ( !this.props.events ) {
       return <Loading />;
     }
 
     return (
-      <EventList events={events} />
+      <EventList events={events}/>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  const events = Object.values(state.events);
+  const events = Object.values(state.events).filter(event => event.company.publicEvents);
 
   return {
     events,
