@@ -13,7 +13,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Welcome companies={this.props.organizations}/>
+      <Welcome organizations={this.props.organizations}/>
     );
   }
 }
