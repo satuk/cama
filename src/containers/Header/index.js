@@ -5,9 +5,9 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {createStyleSheet, withStyles} from "material-ui/styles";
-import {AppBar, Button, Input, Toolbar, Typography} from "material-ui";
+import {AppBar, Button, Grid, Input, Toolbar, Typography} from "material-ui";
 import {Link} from "react-router-dom";
-
+import {colors} from "../../utils/theme";
 
 const appName = "cama";
 const styleSheet = createStyleSheet('Header', theme => ({
@@ -32,6 +32,11 @@ const styleSheet = createStyleSheet('Header', theme => ({
     textDecoration: 'none',
     fontFamily: 'Comfortaa, cursive',
     fontSize: 52,
+  },
+  footer: {
+    padding: '80px 50px 120px',
+    borderTop: '1px solid' + colors.dark4,
+    marginTop: 120,
   },
 }));
 
@@ -76,6 +81,42 @@ class Header extends Component {
           {
             this.props.children
           }
+        </div>
+        <div className={classes.footer}>
+          <Grid container gutter={24}>
+            <Grid item md={6}>
+              <Typography type="display1" gutterBottom>
+                Contact
+              </Typography>
+              <Typography type="title">
+                cama AG
+              </Typography>
+              <Typography>
+                Bahnhofstrasse 100
+              </Typography>
+              <Typography>
+                8000 Zürich
+              </Typography>
+              <Typography>
+                +41 444 55 66
+              </Typography>
+              <Typography>
+                info@cama.ch
+              </Typography>
+            </Grid>
+            <Grid item md={6}>
+              <Typography type="display1" gutterBottom>
+                Information
+              </Typography>
+              <Typography>
+                cama is a plattform for the easy recruiment and organizations for part-time worker.
+              </Typography>
+              <Typography>
+                Closed customer-specific tools are also available on request. We would be pleased to advise you on a
+                personal meeting.
+              </Typography>
+            </Grid>
+          </Grid>
         </div>
       </div>
     );

@@ -85,11 +85,6 @@ const styles = {
     background: gradients.dark3ToDark2,
     margin: 20,
   },
-  footer: {
-    padding: 50,
-    marginTop: 120,
-    borderTop: '1px solid' + colors.dark4,
-  },
 };
 
 const Welcome = (props) => (
@@ -98,7 +93,7 @@ const Welcome = (props) => (
       <Grid container gutter={24}>
         <Grid item xs={12}>
           <div style={{ position: 'relative', width: '100%', }}>
-            <img src={welcomeImage} alt="intro image" style={{ width: '100%' }}/>
+            <img src={welcomeImage} alt="intro" style={{ width: '100%' }}/>
             <h2 style={styles.intro}>
               Recruitment Staff Member, Coordination and Organization.
             </h2>
@@ -248,40 +243,6 @@ const Welcome = (props) => (
           </Grid>
         </Grid>
       </Paper>
-      <Grid container gutter={24} style={styles.footer}>
-        <Grid item md={6}>
-          <Typography type="display1" gutterBottom>
-            Contact
-          </Typography>
-          <Typography type="title">
-            cama AG
-          </Typography>
-          <Typography>
-            Bahnhofstrasse 100
-          </Typography>
-          <Typography>
-            8000 Zürich
-          </Typography>
-          <Typography>
-            +41 444 55 66
-          </Typography>
-          <Typography>
-            info@cama.ch
-          </Typography>
-        </Grid>
-        <Grid item md={6}>
-          <Typography type="display1" gutterBottom>
-            Information
-          </Typography>
-          <Typography>
-            cama is a plattform for the easy recruiment and organizations for part-time worker.
-          </Typography>
-          <Typography>
-            Closed customer-specific tools are also available on request. We would be pleased to advise you on a
-            personal meeting.
-          </Typography>
-        </Grid>
-      </Grid>
     </Container>
   </div>
 );
