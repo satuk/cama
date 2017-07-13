@@ -12,6 +12,7 @@ import Icon from "material-ui/Icon";
 import {colors, gradients} from "../../utils/theme";
 import {CircularProgress} from "material-ui/Progress";
 import Logo from "../../components/OrganizationLogo";
+import {Link} from "react-router-dom";
 
 const styles = {
   become: {
@@ -234,9 +235,12 @@ const Welcome = (props) => (
               {!props.organizations ? (
                 <div style={{ display: 'flex', justifyContent: 'center', }}><CircularProgress size={50}/></div>
               ) : (
-                Object.values(props.organizations).map(org => <Logo key={org.id}
-                                                                    src={org.logo}
-                                                                    alt={org.alt} />)
+                Object.values(props.organizations).map(org =>
+                  <Link to={'/organizations/' + org.id + '/events'}>
+                    <Logo key={org.id}
+                          src={org.logo}
+                          alt={org.alt}/>
+                  </Link>)
               )}
             </div>
           </Grid>
