@@ -84,6 +84,7 @@ ReactDOM.render(
           <Header>
             <Route exact path={"/"} component={ Home }/>
             <Route exact path={"/events"} component={ EventList }/>
+            <Route exact path={"/events/search"} component={ EventList }/>
             <Route exact path={"/organizations/:organization_id/events/:event_id/apply"}
                    component={ EventApplication }/>
             {/*<Route exact path={"/events/:id/events"} component={ EventsByOrganization }/>*/}

@@ -7,6 +7,7 @@ export const ADD_ORGANIZATION = 'addOrganization';
 export const ADD_ORGANIZATIONS = 'addOrganizations';
 
 export const API = 'api';
+export const SEARCH_QUERY = '/search?query=';
 
-export const urlBase = 'https://cama-api.herokuapp.com';
-// export const urlBase = 'http://localhost:8080';
+// export const urlBase = 'https://cama-api.herokuapp.com';
+export const urlBase = 'http://localhost:8080';
