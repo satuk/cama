@@ -96,7 +96,7 @@ const Welcome = (props) => (
           <div style={{ position: 'relative', width: '100%', }}>
             <img src={welcomeImage} alt="intro" style={{ width: '100%' }}/>
             <h2 style={styles.intro}>
-              Recruitment Staff Member, Coordination and Organization.
+              Recruit Staff Members, Coordinate and Organize.
             </h2>
           </div>
         </Grid>
