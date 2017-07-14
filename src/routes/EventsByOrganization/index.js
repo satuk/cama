@@ -10,11 +10,26 @@ import Loading from "../../components/Loading";
 import Container from "../../components/Container";
 import Logo from "../../components/OrganizationLogo";
 import {Grid, Paper, Typography} from "material-ui";
-import {gradients} from "../../utils/theme";
+import {colors, gradients} from "../../utils/theme";
 
 const styles = {
   paper: {
     padding: 50,
+  },
+  overrideLogo: {
+    background: gradients.dark4ToDark1,
+    margin: '20px 20px 20px 0',
+  },
+  a: {
+    color: colors.yellow,
+    textDecoration: 'none',
+  },
+  upComing: {
+    margin: '50px 0',
+  },
+  companyHeader: {
+    display: 'flex',
+    alignItems: 'center',
   },
 };
 
@@ -38,12 +53,9 @@ class EventsByOrganization extends Component {
 
     return (
       <Container>
-        <Grid container gutter={24}>
+        <Grid container gutter={24} style={styles.companyHeader}>
           <Grid item lg={3}>
-            <Logo src={organization.logo} alt={organization.name} style={{
-              background: gradients.dark4ToDark1, margin: '20px' +
-              ' 20px 20px 0',
-            }}/>
+            <Logo src={organization.logo} alt={organization.name} style={styles.overrideLogo}/>
           </Grid>
           <Grid item lg>
             <Typography type="display1" gutterBottom>
@@ -55,13 +67,13 @@ class EventsByOrganization extends Component {
             <Typography type="title" gutterBottom>
               {`${organization.address}, ${organization.postalCode} ${organization.city}`}
             </Typography>
-            <Typography type="title" gutterBottom>
-              <a href={organization.url} target="_blank">{organization.url}</a>
+            <Typography type="body1" gutterBottom>
+              <a style={styles.a} href={organization.url} target="_blank">{organization.url}</a>
             </Typography>
           </Grid>
         </Grid>
         {eventsByCompany.length ? (
-          <div style={{margin: '50px 0',}}>
+          <div style={styles.upComing}>
             <Typography type="display1" gutterBottom>
               Up coming Events
             </Typography>
@@ -84,7 +96,7 @@ class EventsByOrganization extends Component {
 
 const mapStateToProps = (state, props) => {
   const eventsByCompany = Object.values(state.events)
-    .filter(event => event.company.id == props.match.params.id);
+    .filter(e => e.company.id == props.match.params.id);
   const organization = state.organizations;
 
   return {
