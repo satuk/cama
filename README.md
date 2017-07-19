@@ -6,3 +6,15 @@ plattform for Catering Companies to simplify the process of finding Staff Member
 
 ## Todo's
 https://github.com/satuk/cama/projects/1
+
+
+### Usage
+
+Install the dependencies:
+```
+npm install
+```
+Run the app
+```
+yarn start
+```
