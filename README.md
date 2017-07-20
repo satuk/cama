@@ -1,4 +1,4 @@
-# cama - Catering Management 
+# [cama](https://satuk.github.io/cama/) - Catering Management
 
 I finished my bootcamp with this final project. 
 The name of my project is cama, which stands for Catering Management. The idea of this project is to offer a
@@ -8,7 +8,7 @@ plattform for Catering Companies to simplify the process of finding Staff Member
 https://github.com/satuk/cama/projects/1
 
 
-### Usage
+## Usage
 
 Install the dependencies:
 ```
@@ -18,3 +18,6 @@ Run the app
 ```
 yarn start
 ```
+
+## cama API
+Repository: https://github.com/satuk/cama-api
