@@ -12,7 +12,7 @@ https://github.com/satuk/cama/projects/1
 
 Install the dependencies:
 ```
-npm install
+yarn install or npm install
 ```
 Run the app
 ```
