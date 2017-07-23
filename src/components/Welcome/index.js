@@ -32,9 +32,9 @@ const styles = {
   },
   button: {
     marginTop: 20,
-    backgroundColor: '#FF9902',
+    backgroundColor: colors.orange,
     width: 150,
-    color: '#222222',
+    color: colors.dark1,
     fontSize: 18,
   },
   how: {
