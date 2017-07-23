@@ -8,9 +8,9 @@ import {fetchEvents} from "../../store/actions/events";
 import {fetchOrganization} from "../../store/actions/organizations";
 import Loading from "../../components/Loading";
 import Container from "../../components/Container";
-import Logo from "../../components/OrganizationLogo";
-import {Grid, Paper, Typography} from "material-ui";
-import {colors, gradients} from "../../utils/theme";
+import {Paper, Typography} from "material-ui";
+import {gradients} from "../../utils/theme";
+import OrganizationInfo from '../../components/OrganizationInfo';
 
 const styles = {
   paper: {
@@ -20,16 +20,8 @@ const styles = {
     background: gradients.dark4ToDark1,
     margin: '20px 20px 20px 0',
   },
-  a: {
-    color: colors.yellow,
-    textDecoration: 'none',
-  },
   upComing: {
     margin: '50px 0',
-  },
-  companyHeader: {
-    display: 'flex',
-    alignItems: 'center',
   },
 };
 
@@ -53,25 +45,7 @@ class EventsByOrganization extends Component {
 
     return (
       <Container>
-        <Grid container gutter={24} style={styles.companyHeader}>
-          <Grid item lg={3}>
-            <Logo src={organization.logo} alt={organization.name} style={styles.overrideLogo}/>
-          </Grid>
-          <Grid item lg>
-            <Typography type="display1" gutterBottom>
-              {organization.name}
-            </Typography>
-            <Typography type="caption" gutterBottom>
-              {organization.description}
-            </Typography>
-            <Typography type="title" gutterBottom>
-              {`${organization.address}, ${organization.postalCode} ${organization.city}`}
-            </Typography>
-            <Typography type="body1" gutterBottom>
-              <a style={styles.a} href={organization.url} target="_blank">{organization.url}</a>
-            </Typography>
-          </Grid>
-        </Grid>
+        <OrganizationInfo org={organization}/>
         {eventsByCompany.length ? (
           <div style={styles.upComing}>
             <Typography type="display1" gutterBottom>
