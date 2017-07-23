@@ -236,9 +236,8 @@ const Welcome = (props) => (
                 <div style={{ display: 'flex', justifyContent: 'center', }}><CircularProgress size={50}/></div>
               ) : (
                 Object.values(props.organizations).map(org =>
-                  <Link to={'/organizations/' + org.id + '/events'}>
-                    <Logo key={org.id}
-                          src={org.logo}
+                  <Link to={'/organizations/' + org.id + '/events'} key={org.id} >
+                    <Logo src={org.logo}
                           alt={org.alt}/>
                   </Link>)
               )}
