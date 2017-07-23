@@ -232,7 +232,7 @@ const Welcome = (props) => (
               Happy Customers
             </Typography>
             <div>
-              {!props.organizations ? (
+              {!props.organizations.length ? (
                 <div style={{ display: 'flex', justifyContent: 'center', }}><CircularProgress size={50}/></div>
               ) : (
                 Object.values(props.organizations).map(org =>
