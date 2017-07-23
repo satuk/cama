@@ -11,6 +11,7 @@ import EventList from "../../components/EventList";
 import {fetchEvents} from "../../store/actions/events";
 import {connect} from "react-redux";
 import Loading from "../../components/Loading";
+import OrganizationInfo from "../../components/OrganizationInfo";
 
 const styleSheet = createStyleSheet('EventApplication', theme => ({
   container: {
@@ -59,11 +60,6 @@ class EventApplication extends Component {
         <Paper>
           <Grid container gutter={24}>
             <Grid item xs={12}>
-              <Typography type="display1">
-                {curr.name} • {curr.date}
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
               <div style={{ width: '100%', height: '300px', }}>
                 <GoogleMapReact
                   bootstrapURLKeys={{
@@ -81,22 +77,39 @@ class EventApplication extends Component {
                 </GoogleMapReact>
               </div>
             </Grid>
-            <Grid item md={12}>
-              <img src={curr.company.logo} alt={curr.company.description}/>
-              <Typography type="title">Location: {curr.company.name}</Typography>
-              <Typography type="subheading">{curr.company.description}</Typography>
-              <Typography type="subheading">{curr.company.address}</Typography>
-              <Typography type="subheading">{curr.company.postalCode}, {curr.company.city}</Typography>
-              <Typography type="subheading"><a href={curr.company.url}>{curr.company.url}</a></Typography>
+          </Grid>
+
+
+          <Grid container gutter={24}>
+            <Grid item xs={12}>
+              <Grid item xs={12}>
+                <Typography type="display1">
+                  {curr.name} • {curr.date}
+                </Typography>
+              </Grid>
             </Grid>
+          </Grid>
+
+          <Grid container gutter={24}>
             <Grid item md={6}>
               <Typography type="title" gutterBottom>
                 Description: {curr.description}
               </Typography>
             </Grid>
             <Grid item md={6}>
-              <Typography type="title" gutterBottom>Expected Quests: {curr.expectedPerson}</Typography>
+              <Typography type="title" gutterBottom>
+                Expected Quests: {curr.expectedPerson}
+              </Typography>
             </Grid>
+          </Grid>
+
+          <Grid container gutter={24}>
+            <Grid item xs={12}>
+              <Typography type="display1">
+                Location:
+              </Typography>
+            </Grid>
+            <OrganizationInfo org={curr.company}/>
           </Grid>
 
           <Grid container gutter={24}>
