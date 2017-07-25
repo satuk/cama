@@ -15,6 +15,7 @@ import EventList from "./routes/Events";
 import OrganizationList from "./routes/Organizations";
 import EventsByOrganization from "./routes/EventsByOrganization";
 import EventApplication from "./routes/EventApplication";
+import Join from './routes/Join';
 
 import store from "./store";
 
@@ -71,6 +72,11 @@ const theme = createMuiTheme({
         color: colors.yellow,
       },
     },
+    MuiTabs: {
+      flexContainer: {
+        justifyContent: 'center',
+      },
+    },
   },
 });
 
@@ -79,17 +85,16 @@ injectTapEventPlugin();
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
-      <Router>
+      <Router basename="/cama">
         <Switch>
           <Header>
             <Route exact path={"/"} component={ Home }/>
+            <Route exact path={"/join"} component={Join}/>
             <Route exact path={"/events"} component={ EventList }/>
             <Route exact path={"/events/search"} component={ EventList }/>
             <Route exact path={"/organizations/:organization_id/events/:event_id/apply"}
                    component={ EventApplication }/>
-            {/*<Route exact path={"/events/:id/events"} component={ EventsByOrganization }/>*/}
             <Route exact path={"/organizations"} component={OrganizationList}/>
-            {/*<Route exact path={"/organizations/:id/apply"} component={}/>*/}
             <Route exact path={"/organizations/:id/events"} component={ EventsByOrganization }/>
           </Header>
         </Switch>
